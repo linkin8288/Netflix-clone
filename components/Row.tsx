@@ -11,7 +11,7 @@ import Thumbnail from './Thumbnail'
 
 interface Props {
   title: string
-  movies: Movie[] | DocumentData[]
+  movies: Movie[]
 }
 
 function Row({ title, movies }: Props) {

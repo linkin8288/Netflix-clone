@@ -1,7 +1,10 @@
 // npx create-next-app --example with-tailwindss nameOfApp
 // npm i tailwind-scrollbar-hide
 // npm i --save-dev tailwind-scrollbar -> tailwind.config
-// 
+// npm i recoil - a library which similar to redux to help us store multiple
+// useState and data
+// npm i @mui/material @emotion/react @emotion/styled
+// npm i react-player
 
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -11,6 +14,10 @@ import Row from '../components/Row'
 import Banner from '../components/Banner'
 import { Movie } from '../typings'
 import requests from '../utils/requests'
+import Modal from '../components/Modal'
+// recoil
+import { useRecoilValue } from 'recoil'
+import { modalState } from '../atoms/modalAtom'
 
 // types from typings
 interface Props {
@@ -40,7 +47,7 @@ const Home = ({
 
   // const { user, loading } = useAuth()
   // const subscription = useSubscription(user)
-  // const showModal = useRecoilValue(modalState)
+  const showModal = useRecoilValue(modalState)
   // const movie = useRecoilValue(movieState)
   // const list = useList(user?.uid)
 
@@ -84,7 +91,9 @@ const Home = ({
           <Row title="Documentaries" movies={documentaries} />
         </section>
       </main>
-      {/* {showModal && <Modal />} */}
+
+      {/* Modal */}
+      {showModal && <Modal />}
     </div>
   )
 }
